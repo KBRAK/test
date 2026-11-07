@@ -35,3 +35,9 @@ test('Persistenz-Roundtrip und beschädigte Daten', () => {
   raw = '{"version":2}'; assert.throws(() => load(storage));
   assert.throws(() => save({ setItem() { throw new Error('voll'); } }, state));
 });
+test('Verbrauch erhält Dezimalmengen ohne Rundungsartefakte', () => {
+  for (const [quantity, expected] of [[1.1, 0.1], [2.3, 1.3], [1.001, 0.001], [1.0000000000000002, 0.0000000000000002], [0.1, 0], [2, 1]]) {
+    const state = addFood(emptyState(), { name: 'Reis', quantity, unit: 'kg', location: 'Vorrat' });
+    assert.equal(consumeFood(state, state.inventory[0].id).inventory[0].quantity, expected);
+  }
+});

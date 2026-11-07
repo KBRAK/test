@@ -12,8 +12,15 @@ export function addFood(state, input) {
   if (expiresOn && (!/^\d{4}-\d{2}-\d{2}$/.test(expiresOn) || Number.isNaN(Date.parse(expiresOn)) || new Date(expiresOn).toISOString().slice(0, 10) !== expiresOn)) throw new Error('Ungültiges Haltbarkeitsdatum.');
   return { ...state, inventory: [...state.inventory, { id: id(), name: name(input.name), quantity: amount(input.quantity), unit: name(input.unit), location, expiresOn }] };
 }
+// Subtract from the decimal representation to avoid binary floating-point tails.
+function consumeOne(quantity) {
+  if (quantity <= 1) return 0;
+  const [whole, fraction] = String(quantity).split('.');
+  if (fraction && !String(quantity).includes('e')) return Number(`${BigInt(whole) - 1n}.${fraction}`);
+  return quantity - 1;
+}
 export function consumeFood(state, foodId) {
-  return { ...state, inventory: state.inventory.map(item => item.id === foodId ? { ...item, quantity: Math.max(0, item.quantity - 1) } : item) };
+  return { ...state, inventory: state.inventory.map(item => item.id === foodId ? { ...item, quantity: consumeOne(item.quantity) } : item) };
 }
 export function addShopping(state, input) {
   return { ...state, shopping: [...state.shopping, { id: id(), name: name(input.name), quantity: amount(input.quantity), unit: name(input.unit), done: false }] };

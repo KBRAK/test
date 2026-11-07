@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Dokumente · Zuhause</title>
+  <link rel="stylesheet" href="/src/ui/styles.css">
+  <link rel="stylesheet" href="/src/ui/documents.css">
+</head>
+<body class="documents-page">
+  <header class="documents-page-header">
+    <a href="/" class="documents-home" aria-label="Zuhause – zur Haushaltsübersicht">zuhause<span>Ein guter Überblick für deine Familie.</span></a>
+    <nav aria-label="Hauptnavigation"><a href="/">Haushalt</a><a href="/dokumente" aria-current="page">Dokumente</a></nav>
+  </header>
+  <main><div id="documents-app" data-standalone="true"></div><noscript>Bitte JavaScript aktivieren, um Dokumente zu verwalten.</noscript></main>
+  <footer class="documents-page-footer">Zuhause · Deine Familie. Dein Überblick.<a href="/">Zur Haushaltsübersicht →</a></footer>
+  <script type="module" src="/src/documents-app.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+*.cmd text eol=crlf
+*.pdf binary
+*.png binary
+*.zip binary
+*.traineddata binary

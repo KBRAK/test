@@ -1,0 +1,38 @@
+ZUHAUSE AUF WINDOWS STARTEN
+
+1. ZIP-Datei vollstaendig entpacken: Rechtsklick > Alle extrahieren.
+2. Falls noch nicht vorhanden: Node.js 24 LTS von
+   https://nodejs.org/de/download installieren (Windows-Installer .msi).
+   Die Standardoptionen der Installation beibehalten.
+3. Im entpackten Ordner START-ZUHAUSE.cmd doppelt anklicken.
+4. Das Startfenster offen lassen. Der Browser wird automatisch geoeffnet.
+   Falls nicht, folgende Adresse eingeben:
+   http://127.0.0.1:3000/dokumente
+5. Beim ersten Start ein persoenliches Dokumentkonto einrichten.
+   Hierfuer dein eigenes Passwort verwenden. Keine Zugangsdaten im Chat teilen.
+
+DEINE DATEN
+Dies ist eine neue lokale Installation auf deinem PC. Cloud-Daten werden
+nicht automatisch uebernommen. Die Datenbank liegt normalerweise unter:
+%LOCALAPPDATA%\Zuhause\family.sqlite
+Diesen Ordner sichern und nicht beim Entpacken einer neuen Version loeschen.
+Haushaltsdaten wie Vorraete und Einkauf bleiben zusaetzlich im Browserprofil.
+Der Windows-Starter verwendet nur den lokalen Zugriff, keinen Internetserver.
+
+PDF UND BILDER AUSLESEN
+Die Oberflaeche, Dokumentverwaltung und TXT-Analyse funktionieren mit Node.js.
+Die automatische Auslesung von PDFs und Bildern braucht zusaetzlich die
+Windows-Versionen von Poppler und Tesseract. Diese Programme sind NICHT
+in diesem ZIP enthalten. Die enthaltenen OCR-Sprachdaten allein ersetzen
+Tesseract nicht. Anleitungen und Grenzen stehen in docs\documents.md.
+
+Beispiel fuer erfahrene Nutzer mit Windows-Paketmanager winget:
+winget install --exact --id oschwartz10612.Poppler
+winget install --exact --id UB-Mannheim.TesseractOCR
+Danach sicherstellen, dass pdfinfo, pdftotext, pdftoppm und tesseract im PATH
+gefunden werden, und die Anwendung neu starten. Tesseract im Standardordner
+C:\Program Files\Tesseract-OCR wird vom Starter auch ohne PATH gefunden.
+
+Die Server-Startpruefung wurde in der Cloud mit Node.js ausgefuehrt.
+Der Windows-Doppelklick und die Browseroeffnung konnten hier nicht auf
+einem echten Windows-System getestet werden.

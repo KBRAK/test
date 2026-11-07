@@ -1,1 +1,17 @@
-{"name":"zuhause-mvp","version":"0.1.0","private":true,"type":"module","scripts":{"start":"node server.js","test":"node --test","check":"node --check src/app.js && node --check src/domain/household.js && node --check src/storage/local.js"},"engines":{"node":">=22"}}
+{
+  "name": "zuhause-mvp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test",
+    "check": "node --check server.js && node --check backend/family-store.js && node --check src/app.js && node --check src/family-app.js && node --check src/domain/household.js && node --check src/domain/family.js && node --check src/storage/local.js && node --check src/storage/backup.js && node --check src/domain/administration.js && node --check src/administration-app.js && node --check backend/administration-store.js && node --check src/storage/server.js && node --check src/domain/documents.js && node --check src/documents-app.js && node --check backend/document-store.js && node --check backend/document-routes.js && node --check backend/document-extraction.js",
+    "team": "node tools/dev-team/cli.js",
+    "test:browser": "RUN_BROWSER_TESTS=1 node --test tests/forms.browser.test.js tests/family.browser.test.js tests/administration.browser.test.js tests/documents.browser.test.js tests/documents-ui.browser.test.js",
+    "setup:ocr": "sh tools/install-document-ocr.sh"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}
